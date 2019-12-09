@@ -52,6 +52,7 @@ public class WordCountMapReduce extends Configured implements Tool {
         if (word.isEmpty()) {
             continue;
         }
+	// Solo volcamos palabras alfanumericas que incluyan caracteres a-z. No nos interesan, por ejemplo, fechas o ids de usuario
 	if (!word.matches("^[a-zA-Z]*$")) {  
             continue;
         }
@@ -68,8 +69,7 @@ public class WordCountMapReduce extends Configured implements Tool {
       int sum = 0;
       for (IntWritable count : counts) {
         sum += count.get();
-      }
-      // Solo volcamos palabras alfanumericas que incluyan caracteres a-z. No nos interesan, por ejemplo, fechas o ids de usuario 
+      } 
       context.write(word, new IntWritable(sum));
       
     }
