@@ -10,3 +10,4 @@ hadoop jar wordcount.jar org.myorg.WordCount /etl/tutorial/datawarehouse/wordcou
 
 # Mostrar la salida
 hadoop fs -cat /etl/tutorial/datawarehouse/wordcount/out/*
+
