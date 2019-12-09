@@ -52,8 +52,11 @@ public class WordCountMapReduce extends Configured implements Tool {
         if (word.isEmpty()) {
             continue;
         }
-            currentWord = new Text(word);
-            context.write(currentWord,one);
+	if (!word.matches("^[a-zA-Z]*$")) {  
+            continue;
+        }
+        currentWord = new Text(word);
+        context.write(currentWord,one);
         }
     }
   }
@@ -66,8 +69,9 @@ public class WordCountMapReduce extends Configured implements Tool {
       for (IntWritable count : counts) {
         sum += count.get();
       }
-      // Solo volcamos aquellas palabras con una minima relevancia. No nos interesan, por ejemplo, fechas o ids de usuario 
-      if (sum > 10) context.write(word, new IntWritable(sum));
+      // Solo volcamos palabras alfanumericas que incluyan caracteres a-z. No nos interesan, por ejemplo, fechas o ids de usuario 
+      context.write(word, new IntWritable(sum));
+      
     }
   }
 }
