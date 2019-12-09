@@ -17,12 +17,12 @@ import org.apache.hadoop.io.Text;
 
 import org.apache.log4j.Logger;
 
-public class WordCount extends Configured implements Tool {
+public class WordCountMapReduce extends Configured implements Tool {
 
-  private static final Logger LOG = Logger.getLogger(WordCount.class);
+  private static final Logger LOG = Logger.getLogger(WordCountMapReduce.class);
 
   public static void main(String[] args) throws Exception {
-    int res = ToolRunner.run(new WordCount(), args);
+    int res = ToolRunner.run(new WordCountMapReduce(), args);
     System.exit(res);
   }
 
