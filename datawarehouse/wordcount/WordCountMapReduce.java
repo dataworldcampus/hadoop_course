@@ -66,7 +66,8 @@ public class WordCountMapReduce extends Configured implements Tool {
       for (IntWritable count : counts) {
         sum += count.get();
       }
-      context.write(word, new IntWritable(sum));
+      // Solo volcamos aquellas palabras con una minima relevancia. No nos interesan, por ejemplo, fechas o ids de usuario 
+      if (sum > 10) context.write(word, new IntWritable(sum));
     }
   }
 }
