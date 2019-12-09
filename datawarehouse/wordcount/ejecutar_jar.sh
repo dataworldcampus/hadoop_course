@@ -6,5 +6,5 @@ hadoop fs -rmdir /user/cloudera/out/wordcount
 hadoop jar wordcountmapreduce.jar WordCountMapReduce /user/cloudera/datawarehouse/* /user/cloudera/out/wordcount 
 
 # Mostrar la salida
-hadoop fs -cat /user/cloudera/out/*
+hadoop fs -cat /user/cloudera/out/wordcount/*
 
