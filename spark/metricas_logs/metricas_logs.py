@@ -18,12 +18,15 @@ fichero_logs = "/user/cloudera/log_files/access.log.2"
 # 114.98.234.12 - - [10/Oct/2014:00:01:21 ] "GET /handle-bars HTTP/1.0" 200 3143 "http://bleater.com" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)"
 PATRON_LOGS_APACHE = '^(\S+) (\S+) (\S+) \[(.*?)\] "(\S+) (\S+) (\S+)" (\d{3}) (\d+) "(.*?)" "(.*?)"'
  
-# Returns a dictionary containing the parts of the Apache Access Log.
+# Si se ejecuta este codigo de forma interactiva, se puede importar esta funcion de parseo de logs de la siguiente manera
+# sc.addFile("/home/cloudera/workspace/spark_logs/metricas_import.py")
+# from  metricas_import import parsear_linea_log
+
+# Devuelve un diccionario con los campos de un log de acceso estandar de Apache 
 def parsear_linea_log(logline):
     match = re.match(PATRON_LOGS_APACHE, logline)
     if match is None:
-        # Optionally, you can change this to just ignore if each line of data is not critical.
-        # For this example, we want to ensure that the format is consistent.
+        # Error si la linea no tiene un formato valido 
         raise Exception("Linea de log no valida: %s" % logline)
     return Row(
         ip    		= match.group(1),
@@ -38,6 +41,7 @@ def parsear_linea_log(logline):
 	referer	     	= match.group(10), 
 	agente        	= match.group(11)
 )
+
  
 lineas = sc.textFile(fichero_logs)
 lineas.first()
