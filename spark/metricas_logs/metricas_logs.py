@@ -19,7 +19,7 @@ fichero_logs = "/user/cloudera/log_files/access.log.2"
 PATRON_LOGS_APACHE = '^(\S+) (\S+) (\S+) \[(.*?)\] "(\S+) (\S+) (\S+)" (\d{3}) (\d+) "(.*?)" "(.*?)"'
  
 # Si se ejecuta este codigo de forma interactiva, se puede importar esta funcion de parseo de logs de la siguiente manera
-# sc.addFile("/home/cloudera/workspace/spark_logs/metricas_import.py")
+# sc.addFile("/home/cloudera/workspace/hadoop_course-master/spark/metricas_logs/metricas_import.py")
 # from  metricas_import import parsear_linea_log
 
 # Devuelve un diccionario con los campos de un log de acceso estandar de Apache 
