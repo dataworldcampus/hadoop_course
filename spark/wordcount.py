@@ -12,7 +12,7 @@ textFile = sc.textFile("/user/cloudera/datawarehouse/order_reviews_dataset.csv")
 wordCounts = textFile.flatMap(lambda line: line.split()).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a+b).cache()
 
 # Si lanzamos el codigo con spark-submit deberiamos escribir los resultados en un fichero
-wordCounts.saveAsTextFile("/home/cloudera/out/wordcount")
+wordCounts.saveAsTextFile("/user/cloudera/out/wordcount")
 
 # Para ver los resultados en HDFS
 #hadoop fs -cat /user/cloudera/out/wordcount/*
