@@ -5,5 +5,5 @@ hadoop fs -mkdir /user/cloudera/datawarehouse
 hadoop fs -mkdir /user/cloudera/datawarehouse/out
 
 # Copiar datos a HDFS
-hadoop fs -put /home/cloudera/workspace/hadoop_course/datawarehouse/data/* /user/cloudera/datawarehouse
+hadoop fs -put /home/cloudera/workspace/hadoop_course-master/datawarehouse/data/* /user/cloudera/datawarehouse
 
